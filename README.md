@@ -4,14 +4,14 @@ NovaUI ist eine benutzerfreundliche und anpassbare UI-Library für Roblox, die e
 
 ## 📦 Installation
 
-1. **Lade die NovaUI.lua Datei herunter**
+1. **Lade die NovaUI-Lib**
    Du kannst NovaUI direkt von einem Hosting-Dienst (z. B. Pastebin oder GitHub) laden:
 
    ```lua
-   local Nova = loadstring(game:HttpGet("https://yourcdn.com/NovaUI.lua"))()
+   local Nova = loadstring(game:HttpGet("https://raw.githubusercontent.com/N40000-Scripts/NovaUI/refs/heads/main/NovaUI_Main_Module"))()
    ```
 
-2. **Integriere NovaUI in dein Skript:**
+2. **Integriere NovaUI in dein Skript/Projekt:**
    Erstelle eine neue Instanz von `NovaUI` und verwende sie, um UI-Komponenten zu erstellen.
 
 ## 🔨 Setup
