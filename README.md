@@ -166,26 +166,61 @@ local ScrollableSection = MainTab:AddScrollableSection({
 })
 ```
 
-### 12. Wechsel zwischen Themes
+### 12. 🎨 Wechsel zwischen Themes
 
-Du kannst das Theme der UI jederzeit wechseln:
+Du kannst das Theme der UI jederzeit dynamisch ändern. NovaUI bietet mehrere vorinstallierte Themes zur Auswahl:
 
 ```lua
+-- Theme setzen (z. B. beim Start oder durch Benutzerwahl)
 Window:ApplyTheme("Red")  -- Setzt das Theme auf Rot
 ```
 
-### 13. Konfiguration speichern und laden
+Verfügbare Themes:
 
-Um Benutzereinstellungen zu speichern und zu laden:
+* `"Default"` – Standard-Design
+* `"Red"` – Roter Akzent
+* `"Green"` – Grüner Akzent
+* `"Purple"` – Lila Akzent
+* `"Dark"` – Dunkles, kontrastreiches UI
+
+💾 Wenn du das gewählte Theme dauerhaft speichern möchtest:
 
 ```lua
--- Speichern
-Settings["Aimbot"] = true  -- Beispiel, Toggle speichern
+Settings["SelectedTheme"] = "Red"  -- Speichert das ausgewählte Theme
 saveConfig()
-
--- Laden
-local currentAimbotSetting = Settings["Aimbot"]
 ```
+
+Und später beim Laden der Konfiguration wieder anwenden:
+
+```lua
+loadConfig()
+if Settings["SelectedTheme"] then
+   Window:ApplyTheme(Settings["SelectedTheme"])
+end
+```
+
+### 13. 💾 Konfiguration speichern und laden
+
+NovaUI unterstützt das Speichern und Laden von Benutzereinstellungen. Dies ermöglicht es dir, Zustände von Komponenten (z. B. Toggles, ausgewählte Themes) zwischen Spielstarts beizubehalten.
+
+```lua
+-- Speichern von Einstellungen
+Settings["Aimbot"] = true              -- Beispiel: Aimbot-Toggle aktivieren
+Settings["SelectedTheme"] = "Red"      -- Gewähltes Theme speichern
+saveConfig()                           -- Konfiguration speichern
+
+-- Laden von Einstellungen
+loadConfig()                           -- Konfiguration laden
+local currentAimbotSetting = Settings["Aimbot"]
+local savedTheme = Settings["SelectedTheme"]
+
+-- Theme anwenden (falls vorhanden)
+if savedTheme then
+   Window:ApplyTheme(savedTheme)
+end
+```
+
+🗂️ Die Konfiguration wird lokal als `.txt`-Datei im JSON-Format gespeichert. Stelle sicher, dass du `saveConfig()` aufrufst, nachdem du Änderungen an den `Settings` vorgenommen hast.
 
 ### 14. Fenster schließen
 
